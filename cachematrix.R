@@ -3,7 +3,7 @@
 ## cache, else the new inverse is computed and cached. 
 
 
-## 'makeCacheMatrix' function takes a matrix and returns a vector list of functions to be used by the next function to 
+## 'makeCacheMatrix' function takes a matrix argument and returns a vector list of functions to be used by the 'cacheSolve' function to 
 ## calculate the inverse and also to cache the inverse matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -16,11 +16,11 @@ makeCacheMatrix <- function(x = matrix()) {
     i <<- NULL  
   }
  
-  ## define the functions needed for the next 'cacheSolve' function
+  ## define the functions needed for the 'cacheSolve' function
   
-  get <- function() x
-  setinverse <- function(inverse) i <<- inverse
-  getinverse <- function() i
+  get <- function() x                           ## Returns x
+  setinverse <- function(inverse) i <<- inverse ## Sets i to function argument with lexical scoping
+  getinverse <- function() i                    ## Returns i 
   
   ## Return the list of the functions defined above
   
@@ -35,14 +35,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## cached data. 
 
 cacheSolve <- function(x, ...) {
-  ## getting and checking cached data 
+  ## getting and checking cached data for inverse matrix. Return cached value if not NULL.
   i <- x$getinverse()
   if(!is.null(i)) {
     message("getting cached data")
     return(i)
   }
   
-  ## compute, cache and return inverse of matrix
+  ## compute, cache and return inverse of matrix if checked cached value above was NULL.
   data <- x$get()
   i <- solve(data, ...)
   x$setinverse(i)
