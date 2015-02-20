@@ -1,4 +1,5 @@
-## The 2 functions 'makeCacheMatrix' and 'cacheSolve' are used in combination to calculate the inverse of a given matrix and ## store the value in cache. If the inverse of the previous matrix is to be calculated again, the value is fetched from the ## cache, else the new inverse is computed and cached. 
+## The 2 functions 'makeCacheMatrix' and 'cacheSolve' are used in combination to calculate the inverse of a given matrix and
+## store the value in cache. If the inverse of the previous matrix is to be calculated again, the value is fetched from the ## cache, else the new inverse is computed and cached. 
 
 
 ## 'makeCacheMatrix' function takes a matrix and returns a vector list of functions to be used by the next function to 
